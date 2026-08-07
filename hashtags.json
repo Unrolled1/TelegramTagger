@@ -1,0 +1,27 @@
+[
+  {
+    "category": "Anime",
+    "name": "Anime",
+    "tags": "#anime #animeart"
+  },
+  {
+    "category": "Anime",
+    "name": "SFW",
+    "tags": "#sfw"
+  },
+  {
+    "category": "Game",
+    "name": "Gaming",
+    "tags": "#gaming #game"
+  },
+  {
+    "category": "Game",
+    "name": "Warpath",
+    "tags": "#warpath"
+  },
+  {
+    "category": "Stream",
+    "name": "Stream",
+    "tags": "#stream"
+  }
+]
