@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.AutoTagger = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
-            // notifyIcon1
+            // AutoTagger
             // 
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
+            this.AutoTagger.Icon = ((System.Drawing.Icon)(resources.GetObject("AutoTagger.Icon")));
+            this.AutoTagger.Text = "AutoTagger";
+            this.AutoTagger.Visible = true;
             // 
             // MainForm
             // 
@@ -48,14 +48,13 @@
             this.ShowInTaskbar = false;
             this.Text = "TelegramTags";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.NotifyIcon AutoTagger;
     }
 }
 

@@ -1,27 +1,389 @@
 [
   {
-    "category": "Anime",
-    "name": "Anime",
-    "tags": "#anime #animeart"
+    "group": "General",
+    "Fixedtags": [
+      {
+        "name": "SFW",
+        "tag": "#SFW"
+      },
+      {
+        "name": "NSFW",
+        "tag": "#NSFW"
+      },
+      {
+        "name": "Video",
+        "tag": "#Video"
+      },
+      {
+        "name": "Cosplay",
+        "tag": "#Cosplay"
+      }
+    ]
   },
   {
-    "category": "Anime",
-    "name": "SFW",
-    "tags": "#sfw"
+    "group": "Game",
+    "name": "Genshin Impact",
+    "tag": "#Genshin_impact",
+    "characters": [
+      {
+        "name": "Mona",
+        "tag": "#Mona"
+      },
+      {
+        "name": "Yae Miko",
+        "tag": "#Yae_Miko"
+      },
+      {
+        "name": "Raiden Shogun",
+        "tag": "#Raiden_Shogun"
+      },
+      {
+        "name": "Keqing",
+        "tag": "#Keqing"
+      },
+      {
+        "name": "Odetta",
+        "tag": "#Odetta"
+      },
+      {
+        "name": "Columbina",
+        "tag": "#Columbina"
+      },
+      {
+        "name": "Sandrone",
+        "tag": "#Sandrone"
+      },
+      {
+        "name": "Shenhe",
+        "tag": "#Shenhe"
+      },
+      {
+        "name": "Mavuika",
+        "tag": "#Mavuika"
+      },
+      {
+        "name": "Arlecchino",
+        "tag": "#Arlecchino"
+      }
+    ]
   },
   {
-    "category": "Game",
-    "name": "Gaming",
-    "tags": "#gaming #game"
+    "group": "Game",
+    "name": "ZZZ",
+    "tag": "#ZZZ",
+    "characters": [
+      {
+        "name": "Remielle",
+        "tag": "#Remielle"
+      },
+      {
+        "name": "Belle",
+        "tag": "#Belle"
+      },
+      {
+        "name": "Velina",
+        "tag": "#Velina"
+      },
+      {
+        "name": "Norma Hollowell",
+        "tag": "#Norma_Hollowell"
+      }
+    ]
   },
   {
-    "category": "Game",
-    "name": "Warpath",
-    "tags": "#warpath"
+    "group": "Game",
+    "name": "Blue Archive",
+    "tag": "#Blue_Archive",
+    "characters": [
+      {
+        "name": "Ichinose Asuna",
+        "tag": "#Ichinose_Asuna"
+      },
+      {
+        "name": "Hanako",
+        "tag": "#Hanako"
+      }
+    ]
   },
   {
-    "category": "Stream",
-    "name": "Stream",
-    "tags": "#stream"
+    "group": "Game",
+    "name": "Hololive",
+    "tag": "#Hololive",
+    "characters": []
+  },
+  {
+    "group": "Game",
+    "name": "Arknights",
+    "tag": "#Arknights",
+    "characters": [
+      {
+        "name": "Rosa",
+        "tag": "#Rosa"
+      },
+      {
+        "name": "Mulberry",
+        "tag": "#Mulberry"
+      },
+      {
+        "name": "La Pluma",
+        "tag": "#La_Pluma"
+      }
+    ]
+  },
+  {
+    "group": "Game",
+    "name": "Azure Lane",
+    "tag": "#Azure_Lane",
+    "characters": [
+      {
+        "name": "Plymouth",
+        "tag": "#Plymouth"
+      }
+    ]
+  },
+  {
+    "group": "Anime",
+    "name": "Bleach",
+    "tag": "#Bleach",
+    "characters": [
+      {
+        "name": "Rangiku Matsumoto",
+        "tag": "#Rangikumatsumoto"
+      },
+      {
+        "name": "Tier Harrible",
+        "tag": "#Tier_Harrible"
+      }
+    ]
+  },
+  {
+    "group": "Game",
+    "name": "NIKKE",
+    "tag": "#NIKKE",
+    "characters": [
+      {
+        "name": "Marciana",
+        "tag": "#Marciana"
+      },
+      {
+        "name": "Cinderella",
+        "tag": "#Cinderella"
+      },
+      {
+        "name": "Rapi",
+        "tag": "#Rapi"
+      },
+      {
+        "name": "Dorothy",
+        "tag": "#Dorothy"
+      },
+      {
+        "name": "Tia",
+        "tag": "#Tia"
+      },
+      {
+        "name": "Naga",
+        "tag": "#Naga"
+      },
+      {
+        "name": "Little Mermaid",
+        "tag": "#Little_Mermaid"
+      }
+    ]
+  },
+  {
+    "group": "Game",
+    "name": "Nier Automata",
+    "tag": "#Nier_Automata",
+    "characters": []
+  },
+  {
+    "group": "Game",
+    "name": "Pokemon",
+    "tag": "#Pokemon",
+    "characters": []
+  },
+  {
+    "group": "Game",
+    "name": "Silver Palace",
+    "tag": "#Silver_Palace",
+    "characters": []
+  },
+  {
+    "group": "Game",
+    "name": "Wuthering Waves",
+    "tag": "#Wuthering_Waves",
+    "characters": [
+      {
+        "name": "Sigrika",
+        "tag": "#Sigrika"
+      },
+      {
+        "name": "Fleurdelys",
+        "tag": "#Fleurdelys"
+      }
+    ]
+  },
+  {
+    "group": "Anime",
+    "name": "Chainsaw Man",
+    "tag": "#Chainsaw_Man",
+    "characters": [
+      {
+        "name": "Makima",
+        "tag": "#Makima"
+      }
+    ]
+  },
+  {
+    "group": "Game",
+    "name": "Marvel Rivals",
+    "tag": "#Marvel_Rivals",
+    "characters": [
+      {
+        "name": "Jubliee",
+        "tag": "#Jubliee"
+      }
+    ]
+  },
+  {
+    "group": "Anime",
+    "name": "Mushoku Tensei",
+    "tag": "#Mushoku_Tensei",
+    "characters": [
+      {
+        "name": "Ghislaine Dedoldia",
+        "tag": "#Ghislaine_Dedoldia"
+      }
+    ]
+  },
+  {
+    "group": "Game",
+    "name": "Honkai Starrail",
+    "tag": "#Honkai_Starrail",
+    "characters": [
+      {
+        "name": "Hysilens",
+        "tag": "#Hysilens"
+      }
+    ]
+  },
+  {
+    "group": "Anime",
+    "name": "Naruto",
+    "tag": "#Naruto",
+    "characters": [
+      {
+        "name": "Ino Yamanaka",
+        "tag": "#Ino_yamanaka"
+      },
+      {
+        "name": "Hinata",
+        "tag": "#Hinata"
+      }
+    ]
+  },
+  {
+    "group": "Game",
+    "name": "Fire Emblem",
+    "tag": "#Fire_Emblem",
+    "characters": [
+      {
+        "name": "Echidna",
+        "tag": "#Echidna"
+      },
+      {
+        "name": "Oyatsu",
+        "tag": "#Oyatsu"
+      }
+    ]
+  },
+  {
+    "group": "Game",
+    "name": "Limbus Company",
+    "tag": "#Limbus_Company",
+    "characters": [
+      {
+        "name": "Ishmael",
+        "tag": "#Ishmael"
+      }
+    ]
+  },
+  {
+    "group": "Game",
+    "name": "Riichi City",
+    "tag": "#Riichi_City",
+    "characters": [
+      {
+        "name": "Lorelei",
+        "tag": "#Lorelei"
+      }
+    ]
+  },
+  {
+    "group": "Anime",
+    "name": "Panty And Stocking",
+    "tag": "#PantyAndStocking",
+    "characters": [
+      {
+        "name": "Stocking",
+        "tag": "#Stocking"
+      }
+    ]
+  },
+  {
+    "group": "Game",
+    "name": "Helltaker",
+    "tag": "#Helltaker",
+    "characters": [
+      {
+        "name": "Zdrada",
+        "tag": "#Zdrada"
+      }
+    ]
+  },
+  {
+    "group": "Game",
+    "name": "Metroid",
+    "tag": "#Metroid",
+    "characters": [
+      {
+        "name": "Samus Aran",
+        "tag": "#Samus_aran"
+      }
+    ]
+  },
+  {
+    "group": "Anime",
+    "name": "Smoking Behind The Supermarket With You",
+    "tag": "#SmokingBehindTheSupermarketWithYou",
+    "characters": [
+      {
+        "name": "Tayama",
+        "tag": "#Tayama"
+      }
+    ]
+  },
+  {
+    "group": "Anime",
+    "name": "Rezero",
+    "tag": "#Rezero",
+    "characters": [
+      {
+        "name": "Emilia",
+        "tag": "#Emilia"
+      }
+    ]
+  },
+  {
+    "group": "Anime",
+    "name": "Chainsmoker Cat",
+    "tag": "#ChainsmokerCat",
+    "characters": [
+      {
+        "name": "Yani Neko",
+        "tag": "#Yani_Neko"
+      }
+    ]
   }
 ]

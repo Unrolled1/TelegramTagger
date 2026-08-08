@@ -1,15 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace TelegramTags
+public class TagItem
 {
-    internal class TagItem
-    {
-        public string category { get; set; }
-        public string name { get; set; }
-        public string tags { get; set; }
-    }
+    public string group { get; set; }
+
+    public string name { get; set; }
+
+    public string tag { get; set; }
+
+    public List<CharacterItem> characters { get; set; }
+
+    public List<FixedTagItem> Fixedtags { get; set; }
+}
+
+public class CharacterItem
+{
+    public string name { get; set; }
+
+    public string tag { get; set; }
+}
+
+public class FixedTagItem
+{
+    public string name { get; set; }
+
+    public string tag { get; set; }
 }

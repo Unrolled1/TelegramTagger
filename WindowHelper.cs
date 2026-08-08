@@ -16,9 +16,18 @@ namespace TelegramTags
             StringBuilder text,
             int count);
 
-
         [DllImport("user32.dll")]
         static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(
+            IntPtr hWnd,
+            int nCmdShow);
+
+        [DllImport("user32.dll")]
+        static extern bool IsIconic(IntPtr hWnd);
+
+        const int SW_RESTORE = 9;
 
 
         public static string GetActiveWindowTitle()
@@ -37,19 +46,33 @@ namespace TelegramTags
         }
 
 
-        public static void FocusTelegram()
+        public static bool FocusTelegram()
         {
             foreach (Process p in Process.GetProcesses())
             {
-                if (p.ProcessName.ToLower().Contains("telegram"))
+                if (!p.ProcessName.ToLower().Contains("telegram"))
+                    continue;
+
+                IntPtr handle = p.MainWindowHandle;
+
+                if (handle == IntPtr.Zero)
+                    continue;
+
+
+                // اگر تلگرام Minimize شده
+                if (IsIconic(handle))
                 {
-                    if (p.MainWindowHandle != IntPtr.Zero)
-                    {
-                        SetForegroundWindow(p.MainWindowHandle);
-                        return;
-                    }
+                    ShowWindow(handle, SW_RESTORE);
                 }
+
+
+                // آوردن تلگرام جلو
+                SetForegroundWindow(handle);
+
+                return true;
             }
+
+            return false;
         }
     }
 }

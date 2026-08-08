@@ -1,31 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Runtime.InteropServices;
-using System.Linq;
 using System.Diagnostics;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace TelegramTags
 {
-    
     public partial class MainForm : Form
     {
         HotKeyManager hotKey;
+        TagPickerForm tagPicker;
+
         [DllImport("user32.dll")]
         static extern IntPtr GetForegroundWindow();
+
         public MainForm()
         {
             InitializeComponent();
+
             hotKey = new HotKeyManager(this);
+
+            // TagPicker فعلاً ساخته نمی‌شود
+            tagPicker = null;
         }
-        
 
         private bool IsTelegramActive()
-         {
-        IntPtr hwnd = GetForegroundWindow();
+        {
+            IntPtr hwnd = GetForegroundWindow();
 
             foreach (Process p in Process.GetProcesses())
             {
@@ -37,12 +38,8 @@ namespace TelegramTags
             }
 
             return false;
-    }
-    private void MainForm_Load(object sender, EventArgs e)
-        {
-
         }
-        
+
         protected override void WndProc(ref Message m)
         {
             const int WM_HOTKEY = 0x0312;
@@ -51,18 +48,46 @@ namespace TelegramTags
             {
                 if (IsTelegramActive())
                 {
-                    TagPickerForm f = new TagPickerForm();
-
-                    Point pos = Cursor.Position;
-
-                    f.StartPosition = FormStartPosition.Manual;
-                    f.Location = pos;
-
-                    f.Show();
+                    if (tagPicker == null || tagPicker.IsDisposed)
+                    {
+                        tagPicker = new TagPickerForm();
+                        tagPicker.FormClosed += TagPicker_FormClosed;
+                        tagPicker.Show();
+                    }
+                    else
+                    {
+                        tagPicker.BringToFront();
+                        tagPicker.Activate();
+                    }
                 }
             }
 
             base.WndProc(ref m);
+        }
+
+        private void TagPicker_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            tagPicker = null;
+
+            // بستن TagPicker = پایان کامل برنامه
+            Application.Exit();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (hotKey != null)
+            {
+                hotKey.Dispose();
+                hotKey = null;
+            }
+
+            if (AutoTagger != null)
+            {
+                AutoTagger.Visible = false;
+                AutoTagger.Dispose();
+            }
+
+            base.OnFormClosing(e);
         }
     }
 }
