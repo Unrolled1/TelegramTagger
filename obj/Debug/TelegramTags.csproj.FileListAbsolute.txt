@@ -14,3 +14,5 @@ E:\Code\TelegramTags\obj\Debug\TelegramTags.csproj.CoreCompileInputs.cache
 E:\Code\TelegramTags\obj\Debug\TelegramTags.csproj.CopyComplete
 E:\Code\TelegramTags\obj\Debug\TelegramTags.exe
 E:\Code\TelegramTags\obj\Debug\TelegramTags.pdb
+E:\Code\TelegramTags\obj\Debug\TelegramTags.AddTagForm.resources
+E:\Code\TelegramTags\obj\Debug\TelegramTags.ManageTagsForm.resources

@@ -189,7 +189,6 @@ namespace TelegramTags
             LoadCharacters(game);
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             string result = "";
@@ -283,6 +282,27 @@ namespace TelegramTags
             {
                 LoadCategories();
             }
+        }
+
+        private void btnAddTag_Click(object sender, EventArgs e)
+        {
+            AddTagForm form = new AddTagForm();
+
+            form.ShowDialog();
+
+            LoadTags();
+
+            LoadCategories();
+        }
+
+        private void btnManageTags_Click(object sender, EventArgs e)
+        {
+            ManageTagsForm form = new ManageTagsForm();
+
+            form.ShowDialog();
+
+            LoadTags();
+            LoadCategories();
         }
     }
 }

@@ -1,6 +1,9 @@
 [
   {
     "group": "General",
+    "name": null,
+    "tag": null,
+    "characters": null,
     "Fixedtags": [
       {
         "name": "SFW",
@@ -65,7 +68,8 @@
         "name": "Arlecchino",
         "tag": "#Arlecchino"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -88,7 +92,8 @@
         "name": "Norma Hollowell",
         "tag": "#Norma_Hollowell"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -103,13 +108,15 @@
         "name": "Hanako",
         "tag": "#Hanako"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
     "name": "Hololive",
     "tag": "#Hololive",
-    "characters": []
+    "characters": [],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -128,7 +135,8 @@
         "name": "La Pluma",
         "tag": "#La_Pluma"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -139,7 +147,8 @@
         "name": "Plymouth",
         "tag": "#Plymouth"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Anime",
@@ -154,7 +163,8 @@
         "name": "Tier Harrible",
         "tag": "#Tier_Harrible"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -189,25 +199,29 @@
         "name": "Little Mermaid",
         "tag": "#Little_Mermaid"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
     "name": "Nier Automata",
     "tag": "#Nier_Automata",
-    "characters": []
+    "characters": [],
+    "Fixedtags": null
   },
   {
     "group": "Game",
     "name": "Pokemon",
     "tag": "#Pokemon",
-    "characters": []
+    "characters": [],
+    "Fixedtags": null
   },
   {
     "group": "Game",
     "name": "Silver Palace",
     "tag": "#Silver_Palace",
-    "characters": []
+    "characters": [],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -222,7 +236,8 @@
         "name": "Fleurdelys",
         "tag": "#Fleurdelys"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Anime",
@@ -233,7 +248,8 @@
         "name": "Makima",
         "tag": "#Makima"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -244,7 +260,8 @@
         "name": "Jubliee",
         "tag": "#Jubliee"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Anime",
@@ -255,7 +272,8 @@
         "name": "Ghislaine Dedoldia",
         "tag": "#Ghislaine_Dedoldia"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -266,7 +284,8 @@
         "name": "Hysilens",
         "tag": "#Hysilens"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Anime",
@@ -281,7 +300,8 @@
         "name": "Hinata",
         "tag": "#Hinata"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -296,7 +316,8 @@
         "name": "Oyatsu",
         "tag": "#Oyatsu"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -307,7 +328,8 @@
         "name": "Ishmael",
         "tag": "#Ishmael"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -318,7 +340,8 @@
         "name": "Lorelei",
         "tag": "#Lorelei"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Anime",
@@ -329,7 +352,8 @@
         "name": "Stocking",
         "tag": "#Stocking"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -340,7 +364,8 @@
         "name": "Zdrada",
         "tag": "#Zdrada"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Game",
@@ -351,7 +376,8 @@
         "name": "Samus Aran",
         "tag": "#Samus_aran"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Anime",
@@ -362,7 +388,8 @@
         "name": "Tayama",
         "tag": "#Tayama"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Anime",
@@ -373,7 +400,8 @@
         "name": "Emilia",
         "tag": "#Emilia"
       }
-    ]
+    ],
+    "Fixedtags": null
   },
   {
     "group": "Anime",
@@ -384,6 +412,7 @@
         "name": "Yani Neko",
         "tag": "#Yani_Neko"
       }
-    ]
+    ],
+    "Fixedtags": null
   }
 ]
