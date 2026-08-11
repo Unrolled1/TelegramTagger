@@ -41,7 +41,7 @@ namespace TelegramTags
 
             foreach (var game in allTags.Where(x => x.group == "Game"))
             {
-                TreeNode gameItem = new TreeNode(game.name);
+                TreeNode gameItem = new TreeNode(game.tag);
                 gameItem.Tag = game;
 
                 if (game.characters != null)
@@ -49,7 +49,7 @@ namespace TelegramTags
                     foreach (var character in game.characters)
                     {
                         TreeNode charNode =
-                            new TreeNode(character.name);
+                            new TreeNode(character.tag);
 
                         charNode.Tag = character;
 
@@ -70,7 +70,7 @@ namespace TelegramTags
             foreach (var anime in allTags.Where(x => x.group == "Anime"))
             {
                 TreeNode animeItem =
-                    new TreeNode(anime.name);
+                    new TreeNode(anime.tag);
 
                 animeItem.Tag = anime;
 
@@ -79,7 +79,7 @@ namespace TelegramTags
                     foreach (var character in anime.characters)
                     {
                         TreeNode charNode =
-                            new TreeNode(character.name);
+                            new TreeNode(character.tag);
 
                         charNode.Tag = character;
 
@@ -105,7 +105,7 @@ namespace TelegramTags
                 foreach (var fixedTag in general.Fixedtags)
                 {
                     TreeNode fixedItem =
-                        new TreeNode(fixedTag.name);
+                        new TreeNode(fixedTag.tag);
 
                     fixedItem.Tag = fixedTag;
 

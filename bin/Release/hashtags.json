@@ -1,0 +1,657 @@
+[
+  {
+    "group": "General",
+    "tag": null,
+    "characters": null,
+    "Fixedtags": [
+      {
+        "tag": "#SFW"
+      },
+      {
+        "tag": "#NSFW"
+      },
+      {
+        "tag": "#Video"
+      },
+      {
+        "tag": "#Cosplay"
+      }
+    ]
+  },
+  {
+    "group": "Game",
+    "tag": "#GenshinImpact",
+    "characters": [
+      {
+        "tag": "#Mona"
+      },
+      {
+        "tag": "#YaeMiko"
+      },
+      {
+        "tag": "#RaidenShogun"
+      },
+      {
+        "tag": "#Keqing"
+      },
+      {
+        "tag": "#Odetta"
+      },
+      {
+        "tag": "#Columbina"
+      },
+      {
+        "tag": "#Sandrone"
+      },
+      {
+        "tag": "#Shenhe"
+      },
+      {
+        "tag": "#Mavuika"
+      },
+      {
+        "tag": "#Arlecchino"
+      },
+      {
+        "tag": "#Hutao"
+      },
+      {
+        "tag": "#Skirk"
+      },
+      {
+        "tag": "#Jahoda"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#ZZZ",
+    "characters": [
+      {
+        "tag": "#Remielle"
+      },
+      {
+        "tag": "#Belle"
+      },
+      {
+        "tag": "#Velina"
+      },
+      {
+        "tag": "#NormaHollowell"
+      },
+      {
+        "tag": "#Sunna"
+      },
+      {
+        "tag": "#JaneDoe"
+      },
+      {
+        "tag": "#Miyabi"
+      },
+      {
+        "tag": "#Ellen"
+      },
+      {
+        "tag": "#YeShiyuan"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#BlueArchive",
+    "characters": [
+      {
+        "tag": "#IchinoseAsuna"
+      },
+      {
+        "tag": "#Hanako"
+      },
+      {
+        "tag": "#Hasumi"
+      },
+      {
+        "tag": "#Shun"
+      },
+      {
+        "tag": "#Karin"
+      },
+      {
+        "tag": "#Toki"
+      },
+      {
+        "tag": "#Mika"
+      },
+      {
+        "tag": "#AruRikuhachima"
+      },
+      {
+        "tag": "#Misuzu"
+      },
+      {
+        "tag": "#Kisaki"
+      },
+      {
+        "tag": "#Satsuki"
+      },
+      {
+        "tag": "#Shimiko"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#Arknights",
+    "characters": [
+      {
+        "tag": "#Rosa"
+      },
+      {
+        "tag": "#Mulberry"
+      },
+      {
+        "tag": "#LaPluma"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#AzureLane",
+    "characters": [
+      {
+        "tag": "#Plymouth"
+      },
+      {
+        "tag": "#Shinano"
+      },
+      {
+        "tag": "#GoudenLeeuw"
+      },
+      {
+        "tag": "#MaxImmelmann"
+      },
+      {
+        "tag": "#Taihou"
+      },
+      {
+        "tag": "#Unzen"
+      },
+      {
+        "tag": "#NewJersey"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#NIKKE",
+    "characters": [
+      {
+        "tag": "#Marciana"
+      },
+      {
+        "tag": "#Cinderella"
+      },
+      {
+        "tag": "#Rapi"
+      },
+      {
+        "tag": "#Dorothy"
+      },
+      {
+        "tag": "#Tia"
+      },
+      {
+        "tag": "#Naga"
+      },
+      {
+        "tag": "#LittleMermaid"
+      },
+      {
+        "tag": "#Anis"
+      },
+      {
+        "tag": "#Guilty"
+      },
+      {
+        "tag": "#Hansel"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#NierAutomata",
+    "characters": [
+      {
+        "tag": "#A2"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#Pokemon",
+    "characters": [
+      {
+        "tag": "#Hilda"
+      },
+      {
+        "tag": "#Cloyster"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#SilverPalace",
+    "characters": [],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#WutheringWaves",
+    "characters": [
+      {
+        "tag": "#Sigrika"
+      },
+      {
+        "tag": "#Fleurdelys"
+      },
+      {
+        "tag": "#Rover"
+      },
+      {
+        "tag": "#Carlotta"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#MarvelRivals",
+    "characters": [
+      {
+        "tag": "#Jubliee"
+      },
+      {
+        "tag": "#InvisibleWoman"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#StarRail",
+    "characters": [
+      {
+        "tag": "#Hysilens"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#FireEmblem",
+    "characters": [
+      {
+        "tag": "#Echidna"
+      },
+      {
+        "tag": "#Oyatsu"
+      },
+      {
+        "tag": "#FemaleRobin"
+      },
+      {
+        "tag": "#Tharja"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#LimbusCompany",
+    "characters": [
+      {
+        "tag": "#Ishmael"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#RiichiCity",
+    "characters": [
+      {
+        "tag": "#Lorelei"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#Helltaker",
+    "characters": [
+      {
+        "tag": "#Zdrada"
+      },
+      {
+        "tag": "#Modeus"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#Metroid",
+    "characters": [
+      {
+        "tag": "#Samusaran"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#EldenRing",
+    "characters": [
+      {
+        "tag": "#QueenMarika"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#GakuenIdolmaster",
+    "characters": [
+      {
+        "tag": "#juoSena"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#ResidentEvil",
+    "characters": [
+      {
+        "tag": "#GraceAshcroft"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#TheLegendOfZelda",
+    "characters": [
+      {
+        "tag": "#Purah"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#Mario",
+    "characters": [
+      {
+        "tag": "#PeincessPeach"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#Dispatch",
+    "characters": [
+      {
+        "tag": "#Malevola"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#TouhouProject",
+    "characters": [
+      {
+        "tag": "#IzayoiSakuya"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#Bleach",
+    "characters": [
+      {
+        "tag": "#Rangikumatsumoto"
+      },
+      {
+        "tag": "#TierHarrible"
+      },
+      {
+        "tag": "#YoruichiShihoin"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#ChainsawMan",
+    "characters": [
+      {
+        "tag": "#Makima"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#MushokuTensei",
+    "characters": [
+      {
+        "tag": "#GhislaineDedoldia"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#Naruto",
+    "characters": [
+      {
+        "tag": "#Inoyamanaka"
+      },
+      {
+        "tag": "#Hinata"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#PantyAndStocking",
+    "characters": [
+      {
+        "tag": "#Stocking"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#Rezero",
+    "characters": [
+      {
+        "tag": "#Emilia"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#SwordArtOnline",
+    "characters": [
+      {
+        "tag": "#Asuna"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#MyHeroAcademia",
+    "characters": [
+      {
+        "tag": "#Miruko"
+      },
+      {
+        "tag": "#MinaAshido"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#Monogatari",
+    "characters": [
+      {
+        "tag": "#BlackHanekawa"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#Umamusume",
+    "characters": [
+      {
+        "tag": "#DantsuFlame"
+      },
+      {
+        "tag": "#TaikiShuttle"
+      },
+      {
+        "tag": "#EishinFlash"
+      },
+      {
+        "tag": "#ManhattanCafe"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#MyDressupDarling",
+    "characters": [
+      {
+        "tag": "#Marine"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#MadeinAbyss",
+    "characters": [
+      {
+        "tag": "#Ozen"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#SmokingBehindTheSupermarketWithYou",
+    "characters": [
+      {
+        "tag": "#Tayama"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#AkameGaKill",
+    "characters": [
+      {
+        "tag": "#Esdeath"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#SpiceAndWolf",
+    "characters": [
+      {
+        "tag": "#Holo"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Other",
+    "tag": "#Hololive",
+    "characters": [
+      {
+        "tag": "#OozoraSubaru"
+      },
+      {
+        "tag": "#OuroKronii"
+      },
+      {
+        "tag": "#MoriCalliop"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Other",
+    "tag": "#McMommy",
+    "characters": [],
+    "Fixedtags": null
+  },
+  {
+    "group": "Other",
+    "tag": "#ChainsmokerCat",
+    "characters": [
+      {
+        "tag": "#YaniNeko"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Other",
+    "tag": "#HatsuneMiku",
+    "characters": [],
+    "Fixedtags": null
+  },
+  {
+    "group": "Anime",
+    "tag": "#GirlsAndPanzer",
+    "characters": [
+      {
+        "tag": "#Kay"
+      }
+    ],
+    "Fixedtags": null
+  },
+  {
+    "group": "Game",
+    "tag": "#FinalFantasyVII",
+    "characters": [
+      {
+        "tag": "#TifaLockhart"
+      }
+    ],
+    "Fixedtags": null
+  }
+]

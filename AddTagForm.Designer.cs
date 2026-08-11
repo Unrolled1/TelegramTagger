@@ -31,9 +31,7 @@
             this.cmbType = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblType = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
             this.lblTag = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.txtTag = new System.Windows.Forms.TextBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
@@ -77,38 +75,20 @@
             this.lblType.TabIndex = 3;
             this.lblType.Text = "Type";
             // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(26, 91);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(51, 20);
-            this.lblName.TabIndex = 4;
-            this.lblName.Text = "Name";
-            // 
             // lblTag
             // 
             this.lblTag.AutoSize = true;
             this.lblTag.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTag.Location = new System.Drawing.Point(28, 123);
+            this.lblTag.Location = new System.Drawing.Point(33, 94);
             this.lblTag.Name = "lblTag";
             this.lblTag.Size = new System.Drawing.Size(36, 20);
             this.lblTag.TabIndex = 5;
             this.lblTag.Text = "Tag";
             // 
-            // txtName
-            // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(89, 88);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(121, 26);
-            this.txtName.TabIndex = 6;
-            // 
             // txtTag
             // 
             this.txtTag.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTag.Location = new System.Drawing.Point(89, 120);
+            this.txtTag.Location = new System.Drawing.Point(89, 88);
             this.txtTag.Name = "txtTag";
             this.txtTag.Size = new System.Drawing.Size(121, 26);
             this.txtTag.TabIndex = 7;
@@ -117,6 +97,8 @@
             // 
             this.cmbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cmbCategory.ItemHeight = 20;
             this.cmbCategory.Location = new System.Drawing.Point(89, 54);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(121, 28);
@@ -140,9 +122,7 @@
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.txtTag);
-            this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblTag);
-            this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblType);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cmbType);
@@ -158,9 +138,7 @@
         private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblType;
-        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblTag;
-        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtTag;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label lblCategory;

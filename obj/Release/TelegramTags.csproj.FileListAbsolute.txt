@@ -1,0 +1,17 @@
+E:\Code\TelegramTags\bin\Release\hashtags.json
+E:\Code\TelegramTags\bin\Release\TelegramTags.exe.config
+E:\Code\TelegramTags\bin\Release\TelegramTags.exe
+E:\Code\TelegramTags\bin\Release\TelegramTags.pdb
+E:\Code\TelegramTags\bin\Release\Newtonsoft.Json.dll
+E:\Code\TelegramTags\bin\Release\Newtonsoft.Json.xml
+E:\Code\TelegramTags\obj\Release\TelegramTags.csproj.AssemblyReference.cache
+E:\Code\TelegramTags\obj\Release\TelegramTags.csproj.SuggestedBindingRedirects.cache
+E:\Code\TelegramTags\obj\Release\TelegramTags.AddTagForm.resources
+E:\Code\TelegramTags\obj\Release\TelegramTags.ManageTagsForm.resources
+E:\Code\TelegramTags\obj\Release\TelegramTags.Properties.Resources.resources
+E:\Code\TelegramTags\obj\Release\TelegramTags.TagPickerForm.resources
+E:\Code\TelegramTags\obj\Release\TelegramTags.csproj.GenerateResource.cache
+E:\Code\TelegramTags\obj\Release\TelegramTags.csproj.CoreCompileInputs.cache
+E:\Code\TelegramTags\obj\Release\TelegramTags.csproj.CopyComplete
+E:\Code\TelegramTags\obj\Release\TelegramTags.exe
+E:\Code\TelegramTags\obj\Release\TelegramTags.pdb

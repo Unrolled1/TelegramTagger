@@ -27,6 +27,8 @@ namespace TelegramTags
         {
             InitializeComponent();
 
+
+            SetColors();
             LoadGroups();
             LoadTags();
         }
@@ -38,7 +40,7 @@ namespace TelegramTags
             {
                 "Anime",
                 "Game",
-                "Stream"
+                "Other"
             };
 
             foreach (string group in groups)
@@ -52,6 +54,10 @@ namespace TelegramTags
                 btn.Tag = group;
 
                 btn.Click += Group_Click;
+                btn.BackColor = Color.FromArgb(49, 51, 56);
+                btn.ForeColor = Color.White;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
 
                 flowGroups.Controls.Add(btn);
 
@@ -94,11 +100,13 @@ namespace TelegramTags
             {
                 CheckBox cb = new CheckBox();
 
-                cb.Text = item.name;
+                cb.Text = item.tag;
                 cb.Tag = item.tag;
 
                 cb.AutoSize = true;
                 cb.Font = new Font("Tahoma", 10);
+                cb.ForeColor = Color.White;
+                cb.BackColor = Color.Transparent;
 
                 flowFixedTags.Controls.Add(cb);
 
@@ -115,30 +123,35 @@ namespace TelegramTags
             selectedCharacterTags.Clear();
             selectedCategory = "";
 
-            if (selectedGroup != "Game" && selectedGroup != "Anime")
+            if (selectedGroup != "Game" &&
+                selectedGroup != "Anime" &&
+                selectedGroup != "Other")
                 return;
 
             var categories = allTags
                 .Where(x => x.group == selectedGroup)
                 .ToList();
 
-            foreach (var game in categories)
+            foreach (var item in categories)
             {
                 Button btn = new Button();
 
-                btn.Text = game.name;
+                btn.Text = item.tag;
                 btn.Width = 130;
                 btn.Height = 35;
 
-                // خود TagItem را داخل Tag نگه می‌داریم
-                btn.Tag = game;
+                btn.Tag = item;
 
                 btn.Click += Category_Click;
+
+                btn.BackColor = Color.FromArgb(49, 51, 56);
+                btn.ForeColor = Color.White;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
 
                 flowCategories.Controls.Add(btn);
             }
         }
-
 
         void LoadCharacters(TagItem game)
         {
@@ -152,11 +165,13 @@ namespace TelegramTags
             {
                 CheckBox cb = new CheckBox();
 
-                cb.Text = item.name;
+                cb.Text = item.tag;
                 cb.Tag = item.tag;
 
                 cb.AutoSize = true;
                 cb.Font = new Font("Tahoma", 10);
+                cb.ForeColor = Color.White;
+                cb.BackColor = Color.Transparent;
 
                 flowCharacters.Controls.Add(cb);
 
@@ -184,7 +199,7 @@ namespace TelegramTags
 
             TagItem game = (TagItem)btn.Tag;
 
-            selectedCategory = game.name;
+            selectedCategory = game.tag;
 
             LoadCharacters(game);
         }
@@ -193,21 +208,23 @@ namespace TelegramTags
         {
             string result = "";
 
-
-            // تگ بازی فقط یک بار
-            if (selectedGroup == "Game" &&
+            // تگ اصلی Game / Anime / Other
+            if ((selectedGroup == "Game" ||
+                 selectedGroup == "Anime" ||
+                 selectedGroup == "Other") &&
                 !string.IsNullOrWhiteSpace(selectedCategory))
             {
-                TagItem game = allTags.FirstOrDefault(x =>
-                    x.group == "Game" &&
-                    x.name == selectedCategory);
+                TagItem item = allTags.FirstOrDefault(x =>
+                    (x.group == "Game" ||
+                     x.group == "Anime" ||
+                     x.group == "Other") &&
+                    x.tag == selectedCategory);
 
-                if (game != null)
+                if (item != null)
                 {
-                    result += game.tag + " ";
+                    result += item.tag + " ";
                 }
             }
-
 
             // تگ شخصیت‌ها
             foreach (CheckBox cb in selectedCharacterTags)
@@ -218,7 +235,6 @@ namespace TelegramTags
                 }
             }
 
-
             // تگ‌های ثابت
             foreach (CheckBox cb in selectedFixedTags)
             {
@@ -228,31 +244,23 @@ namespace TelegramTags
                 }
             }
 
-
             result = result.Trim();
-
 
             if (string.IsNullOrWhiteSpace(result))
                 return;
 
-
             Clipboard.SetText(result);
 
-
             System.Threading.Thread.Sleep(300);
-
 
             if (WindowHelper.FocusTelegram())
             {
                 System.Threading.Thread.Sleep(500);
-
                 SendKeys.SendWait("^v");
             }
 
-
             ResetForm();
         }
-
 
         private void ResetForm()
         {
@@ -303,6 +311,53 @@ namespace TelegramTags
 
             LoadTags();
             LoadCategories();
+        }
+        void SetColors()
+        {
+            this.BackColor = Color.FromArgb(30, 31, 34);
+
+            flowGroups.BackColor = Color.FromArgb(43, 45, 49);
+            flowCategories.BackColor = Color.FromArgb(43, 45, 49);
+            flowCharacters.BackColor = Color.FromArgb(43, 45, 49);
+            flowFixedTags.BackColor = Color.FromArgb(43, 45, 49);
+
+            SetButtonColors(flowGroups);
+            SetButtonColors(flowCategories);
+
+            btnInsert.BackColor = Color.FromArgb(88, 101, 242);
+            btnInsert.ForeColor = Color.White;
+
+            btnAddTag.BackColor = Color.FromArgb(87, 242, 135);
+            btnAddTag.ForeColor = Color.Black;
+
+            btnManageTags.BackColor = Color.FromArgb(49, 51, 56);
+            btnManageTags.ForeColor = Color.White;
+        }
+
+        void SetButtonColors(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (control is Button btn)
+                {
+                    btn.BackColor = Color.FromArgb(49, 51, 56);
+                    btn.ForeColor = Color.White;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
+                }
+            }
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+
+                cp.ExStyle &= ~0x00000080; // WS_EX_TOOLWINDOW
+                cp.ExStyle |= 0x00040000;  // WS_EX_APPWINDOW
+
+                return cp;
+            }
         }
     }
 }

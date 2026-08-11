@@ -6,7 +6,6 @@ E:\Code\TelegramTags\bin\Debug\Newtonsoft.Json.dll
 E:\Code\TelegramTags\bin\Debug\Newtonsoft.Json.xml
 E:\Code\TelegramTags\obj\Debug\TelegramTags.csproj.AssemblyReference.cache
 E:\Code\TelegramTags\obj\Debug\TelegramTags.csproj.SuggestedBindingRedirects.cache
-E:\Code\TelegramTags\obj\Debug\TelegramTags.MainForm.resources
 E:\Code\TelegramTags\obj\Debug\TelegramTags.Properties.Resources.resources
 E:\Code\TelegramTags\obj\Debug\TelegramTags.TagPickerForm.resources
 E:\Code\TelegramTags\obj\Debug\TelegramTags.csproj.GenerateResource.cache

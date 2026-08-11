@@ -25,12 +25,10 @@ namespace TelegramTags
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string name = txtName.Text.Trim();
             string tag = txtTag.Text.Trim();
             string type = cmbType.Text;
 
-            if (string.IsNullOrWhiteSpace(name) ||
-                string.IsNullOrWhiteSpace(tag))
+            if ( string.IsNullOrWhiteSpace(tag))
             {
                 MessageBox.Show("نام و هشتگ را وارد کنید.");
                 return;
@@ -79,7 +77,6 @@ namespace TelegramTags
 
                 general.Fixedtags.Add(new FixedTagItem
                 {
-                    name = name,
                     tag = tag
                 });
             }
@@ -94,7 +91,6 @@ namespace TelegramTags
                 allTags.Add(new TagItem
                 {
                     group = type,
-                    name = name,
                     tag = tag,
                     characters = new List<CharacterItem>()
                 });
@@ -117,7 +113,7 @@ namespace TelegramTags
 
                 TagItem parent = allTags.FirstOrDefault(x =>
                     (x.group == "Game" || x.group == "Anime") &&
-                    x.name == category);
+                    x.tag == category);
 
                 if (parent == null)
                 {
@@ -130,7 +126,6 @@ namespace TelegramTags
 
                 parent.characters.Add(new CharacterItem
                 {
-                    name = name,
                     tag = tag
                 });
             }
@@ -178,7 +173,7 @@ namespace TelegramTags
             foreach (var item in allTags.Where(x =>
                 x.group == "Game" || x.group == "Anime"))
             {
-                cmbCategory.Items.Add(item.name);
+                cmbCategory.Items.Add(item.tag);
             }
 
             if (cmbCategory.Items.Count > 0)
