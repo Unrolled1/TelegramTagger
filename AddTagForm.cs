@@ -12,13 +12,16 @@ namespace TelegramTags
         public AddTagForm()
         {
             InitializeComponent();
-            cmbType.SelectedIndexChanged += cmbType_SelectedIndexChanged;
+
             cmbType.Items.Clear();
 
             cmbType.Items.Add("Game");
             cmbType.Items.Add("Anime");
-            cmbType.Items.Add("Fixed");
+            cmbType.Items.Add("Other");
             cmbType.Items.Add("Character");
+
+            cmbType.SelectedIndexChanged += cmbType_SelectedIndexChanged;
+
             cmbType.SelectedIndex = 0;
         }
 
@@ -28,14 +31,15 @@ namespace TelegramTags
             string tag = txtTag.Text.Trim();
             string type = cmbType.Text;
 
-            if ( string.IsNullOrWhiteSpace(tag))
+            if (string.IsNullOrWhiteSpace(tag))
             {
-                MessageBox.Show("نام و هشتگ را وارد کنید.");
+                MessageBox.Show("هشتگ را وارد کنید.");
                 return;
             }
 
             if (!tag.StartsWith("#"))
                 tag = "#" + tag;
+
 
             string file = "hashtags.json";
 
@@ -45,6 +49,7 @@ namespace TelegramTags
                 return;
             }
 
+
             string json = File.ReadAllText(file);
 
             List<TagItem> allTags =
@@ -52,10 +57,7 @@ namespace TelegramTags
                 ?? new List<TagItem>();
 
 
-            // =========================
-            // هشتگ ثابت
-            // =========================
-
+            // Fixed
             if (type == "Fixed")
             {
                 TagItem general = allTags
@@ -82,11 +84,10 @@ namespace TelegramTags
             }
 
 
-            // =========================
-            // Game یا Anime جدید
-            // =========================
-
-            else if (type == "Game" || type == "Anime")
+            // Game / Anime / Other
+            else if (type == "Game" ||
+                     type == "Anime" ||
+                     type == "Other")
             {
                 allTags.Add(new TagItem
                 {
@@ -97,10 +98,7 @@ namespace TelegramTags
             }
 
 
-            // =========================
-            // شخصیت
-            // =========================
-
+            // Character
             else if (type == "Character")
             {
                 if (cmbCategory.SelectedItem == null)
@@ -109,11 +107,16 @@ namespace TelegramTags
                     return;
                 }
 
-                string category = cmbCategory.SelectedItem.ToString();
+                string category =
+                    cmbCategory.SelectedItem.ToString();
+
 
                 TagItem parent = allTags.FirstOrDefault(x =>
-                    (x.group == "Game" || x.group == "Anime") &&
+                    (x.group == "Game" ||
+                     x.group == "Anime" ||
+                     x.group == "Other") &&
                     x.tag == category);
+
 
                 if (parent == null)
                 {
@@ -121,8 +124,10 @@ namespace TelegramTags
                     return;
                 }
 
+
                 if (parent.characters == null)
                     parent.characters = new List<CharacterItem>();
+
 
                 parent.characters.Add(new CharacterItem
                 {
@@ -136,49 +141,66 @@ namespace TelegramTags
                 Formatting.Indented
             );
 
+
             File.WriteAllText(file, newJson);
+
 
             MessageBox.Show("با موفقیت اضافه شد.");
 
             Close();
         }
 
-        private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void cmbType_SelectedIndexChanged(
+            object sender,
+            EventArgs e)
         {
             cmbCategory.Items.Clear();
 
+
             string type = cmbType.Text;
+
 
             if (type != "Character")
             {
                 lblCategory.Visible = false;
                 cmbCategory.Visible = false;
+
                 return;
             }
+
 
             lblCategory.Visible = true;
             cmbCategory.Visible = true;
 
+
             string file = "hashtags.json";
+
 
             if (!File.Exists(file))
                 return;
 
+
             string json = File.ReadAllText(file);
+
 
             List<TagItem> allTags =
                 JsonConvert.DeserializeObject<List<TagItem>>(json)
                 ?? new List<TagItem>();
 
+
+            // همه Game + Anime + Other
             foreach (var item in allTags.Where(x =>
-                x.group == "Game" || x.group == "Anime"))
+                x.group == "Game" ||
+                x.group == "Anime" ||
+                x.group == "Other"))
             {
                 cmbCategory.Items.Add(item.tag);
             }
 
+
             if (cmbCategory.Items.Count > 0)
                 cmbCategory.SelectedIndex = 0;
         }
-
     }
 }

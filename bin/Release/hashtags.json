@@ -60,6 +60,9 @@
       },
       {
         "tag": "#Jahoda"
+      },
+      {
+        "tag": "#Ganyu"
       }
     ],
     "Fixedtags": null
@@ -137,6 +140,9 @@
       },
       {
         "tag": "#Shimiko"
+      },
+      {
+        "tag": "#Mika"
       }
     ],
     "Fixedtags": null
@@ -434,9 +440,6 @@
       },
       {
         "tag": "#TierHarrible"
-      },
-      {
-        "tag": "#YoruichiShihoin"
       }
     ],
     "Fixedtags": null
@@ -510,9 +513,6 @@
     "characters": [
       {
         "tag": "#Miruko"
-      },
-      {
-        "tag": "#MinaAshido"
       }
     ],
     "Fixedtags": null
@@ -632,26 +632,6 @@
     "group": "Other",
     "tag": "#HatsuneMiku",
     "characters": [],
-    "Fixedtags": null
-  },
-  {
-    "group": "Anime",
-    "tag": "#GirlsAndPanzer",
-    "characters": [
-      {
-        "tag": "#Kay"
-      }
-    ],
-    "Fixedtags": null
-  },
-  {
-    "group": "Game",
-    "tag": "#FinalFantasyVII",
-    "characters": [
-      {
-        "tag": "#TifaLockhart"
-      }
-    ],
     "Fixedtags": null
   }
 ]
