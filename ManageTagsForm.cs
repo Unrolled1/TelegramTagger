@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Drawing;
 
 namespace TelegramTags
 {
@@ -118,7 +119,67 @@ namespace TelegramTags
             treeTags.ExpandAll();
         }
 
+        private string ShowInputBox(string title, string value)
+        {
+            using (Form form = new Form())
+            using (TextBox textBox = new TextBox())
+            using (Button btnOk = new Button())
+            using (Button btnCancel = new Button())
+            {
+                form.Text = title;
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.FormBorderStyle = FormBorderStyle.FixedDialog;
+                form.MinimizeBox = false;
+                form.MaximizeBox = false;
+                form.ShowInTaskbar = false;
+                form.Font = this.Font;
+                form.Size = new Size(
+                    this.ClientSize.Width,
+                    140);
 
+                textBox.Font = this.Font;
+                textBox.Text = value;
+                textBox.Left = 15;
+                textBox.Top = 15;
+                textBox.Width = form.ClientSize.Width - 30;
+
+                btnOk.Text = "Edit";
+                btnOk.Font = this.Font;
+                btnOk.DialogResult = DialogResult.OK;
+                btnOk.Width = 80;
+                btnOk.Height = 35;
+                btnOk.Left = form.ClientSize.Width - 175;
+                btnOk.Top = 55;
+
+                btnCancel.Text = "Cancel";
+                btnCancel.Font = this.Font;
+                btnCancel.DialogResult = DialogResult.Cancel;
+                btnCancel.Width = 80;
+                btnCancel.Height = 35;
+                btnCancel.Left = form.ClientSize.Width - 85;
+                btnCancel.Top = 55;
+
+                form.Controls.Add(textBox);
+                form.Controls.Add(btnOk);
+                form.Controls.Add(btnCancel);
+
+                form.AcceptButton = btnOk;
+                form.CancelButton = btnCancel;
+
+                form.ShowIcon = false;
+
+                form.Load += (s, e) =>
+                {
+                    textBox.SelectAll();
+                    textBox.Focus();
+                };
+
+                if (form.ShowDialog(this) == DialogResult.OK)
+                    return textBox.Text;
+
+                return "";
+            }
+        }
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (treeTags.SelectedNode == null)
@@ -208,6 +269,109 @@ namespace TelegramTags
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (treeTags.SelectedNode == null)
+                return;
+
+            TreeNode node = treeTags.SelectedNode;
+
+            if (node.Tag is string)
+            {
+                MessageBox.Show("این مورد قابل ویرایش نیست.");
+                return;
+            }
+
+            string currentTag = "";
+
+            if (node.Tag is TagItem)
+                currentTag = ((TagItem)node.Tag).tag;
+            else if (node.Tag is CharacterItem)
+                currentTag = ((CharacterItem)node.Tag).tag;
+            else if (node.Tag is FixedTagItem)
+                currentTag = ((FixedTagItem)node.Tag).tag;
+
+            if (string.IsNullOrWhiteSpace(currentTag))
+                return;
+
+            string newTag = ShowInputBox("ویرایش هشتگ", currentTag).Trim();
+
+            if (string.IsNullOrWhiteSpace(newTag))
+                return;
+
+            if (!newTag.StartsWith("#"))
+                newTag = "#" + newTag;
+
+            if (node.Tag is TagItem item)
+            {
+                bool duplicate = allTags.Any(x =>
+                    x != item &&
+                    (x.group == "Game" ||
+                     x.group == "Anime" ||
+                     x.group == "Other") &&
+                    string.Equals(
+                        x.tag,
+                        newTag,
+                        StringComparison.OrdinalIgnoreCase));
+
+                if (duplicate)
+                {
+                    MessageBox.Show("این هشتگ از قبل وجود دارد.");
+                    return;
+                }
+
+                item.tag = newTag;
+            }
+            else if (node.Tag is CharacterItem character)
+            {
+                TagItem parent = node.Parent.Tag as TagItem;
+
+                if (parent != null && parent.characters != null)
+                {
+                    bool duplicate = parent.characters.Any(x =>
+                        x != character &&
+                        string.Equals(
+                            x.tag,
+                            newTag,
+                            StringComparison.OrdinalIgnoreCase));
+
+                    if (duplicate)
+                    {
+                        MessageBox.Show("این هشتگ در این عنوان از قبل وجود دارد.");
+                        return;
+                    }
+                }
+
+                character.tag = newTag;
+            }
+            else if (node.Tag is FixedTagItem fixedTag)
+            {
+                TagItem general = allTags
+                    .FirstOrDefault(x => x.group == "General");
+
+                if (general != null && general.Fixedtags != null)
+                {
+                    bool duplicate = general.Fixedtags.Any(x =>
+                        x != fixedTag &&
+                        string.Equals(
+                            x.tag,
+                            newTag,
+                            StringComparison.OrdinalIgnoreCase));
+
+                    if (duplicate)
+                    {
+                        MessageBox.Show("این هشتگ از قبل وجود دارد.");
+                        return;
+                    }
+                }
+
+                fixedTag.tag = newTag;
+            }
+
+            SaveTags();
+            LoadTags();
         }
     }
 }

@@ -48,8 +48,8 @@ namespace TelegramTags
                 Button btn = new Button();
 
                 btn.Text = group;
-                btn.Width = 80;
-                btn.Height = 35;
+                btn.AutoSize = true;
+                btn.Padding = new Padding(10, 5, 10, 5);
 
                 btn.Tag = group;
 
@@ -104,7 +104,6 @@ namespace TelegramTags
                 cb.Tag = item.tag;
 
                 cb.AutoSize = true;
-                cb.Font = new Font("Tahoma", 10);
                 cb.ForeColor = Color.White;
                 cb.BackColor = Color.Transparent;
 
@@ -129,16 +128,17 @@ namespace TelegramTags
                 return;
 
             var categories = allTags
-                .Where(x => x.group == selectedGroup)
-                .ToList();
+    .Where(x => x.group == selectedGroup)
+    .OrderBy(x => x.tag, StringComparer.OrdinalIgnoreCase)
+    .ToList();
 
             foreach (var item in categories)
             {
                 Button btn = new Button();
 
                 btn.Text = item.tag;
-                btn.Width = 130;
-                btn.Height = 35;
+                btn.AutoSize = true;
+                btn.Padding = new Padding(10, 5, 10, 5);
 
                 btn.Tag = item;
 
@@ -169,7 +169,6 @@ namespace TelegramTags
                 cb.Tag = item.tag;
 
                 cb.AutoSize = true;
-                cb.Font = new Font("Tahoma", 10);
                 cb.ForeColor = Color.White;
                 cb.BackColor = Color.Transparent;
 
@@ -330,7 +329,7 @@ namespace TelegramTags
             btnAddTag.BackColor = Color.FromArgb(87, 242, 135);
             btnAddTag.ForeColor = Color.Black;
 
-            btnManageTags.BackColor = Color.FromArgb(49, 51, 56);
+            btnManageTags.BackColor = Color.Red;
             btnManageTags.ForeColor = Color.White;
         }
 

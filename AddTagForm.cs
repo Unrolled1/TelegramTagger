@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Drawing;
+
 
 namespace TelegramTags
 {
@@ -12,7 +14,7 @@ namespace TelegramTags
         public AddTagForm()
         {
             InitializeComponent();
-
+            SetColors();
             cmbType.Items.Clear();
 
             cmbType.Items.Add("Game");
@@ -56,6 +58,73 @@ namespace TelegramTags
                 JsonConvert.DeserializeObject<List<TagItem>>(json)
                 ?? new List<TagItem>();
 
+            // جلوگیری از تکراری بودن تگ
+            bool duplicate = false;
+
+            // تگ ثابت
+            if (type == "Fixed")
+            {
+                TagItem general = allTags.FirstOrDefault(x => x.group == "General");
+
+                if (general != null && general.Fixedtags != null)
+                {
+                    duplicate = general.Fixedtags.Any(x =>
+                        string.Equals(x.tag, tag, StringComparison.OrdinalIgnoreCase));
+                }
+            }
+
+            // عنوان Game / Anime / Other
+            else if (type == "Game" ||
+                     type == "Anime" ||
+                     type == "Other")
+            {
+                duplicate = allTags.Any(x =>
+                    (x.group == "Game" ||
+                     x.group == "Anime" ||
+                     x.group == "Other") &&
+                    string.Equals(x.tag, tag, StringComparison.OrdinalIgnoreCase));
+            }
+
+            // شخصیت
+            else if (type == "Character")
+            {
+                if (cmbCategory.SelectedItem == null)
+                {
+                    MessageBox.Show("یک عنوان انتخاب کنید.");
+                    return;
+                }
+
+                string category = cmbCategory.SelectedItem.ToString();
+
+                TagItem parent = allTags.FirstOrDefault(x =>
+                    (x.group == "Game" ||
+                     x.group == "Anime" ||
+                     x.group == "Other") &&
+                    x.tag == category);
+
+                if (parent == null)
+                {
+                    MessageBox.Show("عنوان پیدا نشد.");
+                    return;
+                }
+
+                if (parent.characters != null)
+                {
+                    duplicate = parent.characters.Any(x =>
+                        string.Equals(x.tag, tag, StringComparison.OrdinalIgnoreCase));
+                }
+            }
+
+            if (duplicate)
+            {
+                MessageBox.Show(
+                    "این هشتگ از قبل وجود دارد.",
+                    "تگ تکراری",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
 
             // Fixed
             if (type == "Fixed")
@@ -145,7 +214,7 @@ namespace TelegramTags
             File.WriteAllText(file, newJson);
 
 
-            MessageBox.Show("با موفقیت اضافه شد.");
+            
 
             Close();
         }
@@ -190,10 +259,15 @@ namespace TelegramTags
 
 
             // همه Game + Anime + Other
-            foreach (var item in allTags.Where(x =>
-                x.group == "Game" ||
-                x.group == "Anime" ||
-                x.group == "Other"))
+            var categories = allTags
+    .Where(x =>
+        x.group == "Game" ||
+        x.group == "Anime" ||
+        x.group == "Other")
+    .OrderBy(x => x.tag, StringComparer.OrdinalIgnoreCase)
+    .ToList();
+
+            foreach (var item in categories)
             {
                 cmbCategory.Items.Add(item.tag);
             }
@@ -202,5 +276,27 @@ namespace TelegramTags
             if (cmbCategory.Items.Count > 0)
                 cmbCategory.SelectedIndex = 0;
         }
+        void SetColors()
+        {
+            this.BackColor = Color.FromArgb(30, 31, 34);
+
+            lblCategory.ForeColor = Color.White;
+            lblTag.ForeColor = Color.White;
+            lblType.ForeColor = Color.White;
+            cmbType.BackColor = Color.FromArgb(43, 45, 49);
+            cmbType.ForeColor = Color.White;
+
+            cmbCategory.BackColor = Color.FromArgb(43, 45, 49);
+            cmbCategory.ForeColor = Color.White;
+
+            txtTag.BackColor = Color.FromArgb(43, 45, 49);
+            txtTag.ForeColor = Color.White;
+
+            btnSave.BackColor = Color.FromArgb(87, 242, 135);
+            btnSave.ForeColor = Color.Black;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.FlatAppearance.BorderSize = 0;
+        }
     }
+
 }
