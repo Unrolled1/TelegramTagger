@@ -15,8 +15,10 @@ namespace TelegramTags
         {
             InitializeComponent();
             SetColors();
+            SetupSaveButton();
             cmbType.Items.Clear();
 
+            cmbType.Items.Add("Fixed");
             cmbType.Items.Add("Game");
             cmbType.Items.Add("Anime");
             cmbType.Items.Add("Other");
@@ -283,6 +285,7 @@ namespace TelegramTags
             lblCategory.ForeColor = Color.White;
             lblTag.ForeColor = Color.White;
             lblType.ForeColor = Color.White;
+
             cmbType.BackColor = Color.FromArgb(43, 45, 49);
             cmbType.ForeColor = Color.White;
 
@@ -292,11 +295,33 @@ namespace TelegramTags
             txtTag.BackColor = Color.FromArgb(43, 45, 49);
             txtTag.ForeColor = Color.White;
 
-            btnSave.BackColor = Color.FromArgb(87, 242, 135);
-            btnSave.ForeColor = Color.Black;
+        }
+
+        private void SetupSaveButton()
+        {
+            btnSave.UseVisualStyleBackColor = false;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.FlatAppearance.BorderSize = 0;
+
+            btnSave.BackColor = Color.FromArgb(87, 242, 135);
+            btnSave.ForeColor = Color.Black;
+
+            btnSave.MouseEnter += BtnSave_MouseEnter;
+            btnSave.MouseLeave += BtnSave_MouseLeave;
         }
+
+        private void BtnSave_MouseEnter(object sender, EventArgs e)
+        {
+            btnSave.BackColor = Color.FromArgb(120, 255, 160);
+            btnSave.ForeColor = Color.Black;
+        }
+
+        private void BtnSave_MouseLeave(object sender, EventArgs e)
+        {
+            btnSave.BackColor = Color.FromArgb(87, 242, 135);
+            btnSave.ForeColor = Color.Black;
+        }
+
     }
 
 }

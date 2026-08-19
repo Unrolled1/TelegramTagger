@@ -62,7 +62,7 @@
             this.btnSave.Size = new System.Drawing.Size(301, 46);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblType

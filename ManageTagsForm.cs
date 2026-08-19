@@ -93,7 +93,32 @@ namespace TelegramTags
 
             treeTags.Nodes.Add(animeNode);
 
+            // Other
+            TreeNode otherNode = new TreeNode("Other");
+            otherNode.Tag = "Group";
 
+            foreach (var other in allTags.Where(x => x.group == "Other"))
+            {
+                TreeNode otherItem = new TreeNode(other.tag);
+                otherItem.Tag = other;
+
+                if (other.characters != null)
+                {
+                    foreach (var character in other.characters)
+                    {
+                        TreeNode charNode =
+                            new TreeNode(character.tag);
+
+                        charNode.Tag = character;
+
+                        otherItem.Nodes.Add(charNode);
+                    }
+                }
+
+                otherNode.Nodes.Add(otherItem);
+            }
+
+            treeTags.Nodes.Add(otherNode);
             // Fixed
             TreeNode fixedNode = new TreeNode("Fixed");
             fixedNode.Tag = "Group";
@@ -116,7 +141,6 @@ namespace TelegramTags
 
             treeTags.Nodes.Add(fixedNode);
 
-            treeTags.ExpandAll();
         }
 
         private string ShowInputBox(string title, string value)

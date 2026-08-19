@@ -18,6 +18,9 @@
       },
       {
         "tag": "#Video"
+      },
+      {
+        "tag": "#Original"
       }
     ]
   },
@@ -102,9 +105,6 @@
       },
       {
         "tag": "#Morgan"
-      },
-      {
-        "tag": "#Circe"
       }
     ],
     "Fixedtags": null
@@ -115,9 +115,6 @@
     "characters": [
       {
         "tag": "#Frieren"
-      },
-      {
-        "tag": "#Ubel"
       }
     ],
     "Fixedtags": null
@@ -543,12 +540,6 @@
       },
       {
         "tag": "#Zibai"
-      },
-      {
-        "tag": "#Ganyu"
-      },
-      {
-        "tag": "#Tsaritsa"
       }
     ],
     "Fixedtags": null
@@ -1003,36 +994,6 @@
     "characters": [
       {
         "tag": "#SakuradaHane"
-      }
-    ],
-    "Fixedtags": null
-  },
-  {
-    "group": "Game",
-    "tag": "#BrownDust2",
-    "characters": [
-      {
-        "tag": "#Eclipse"
-      }
-    ],
-    "Fixedtags": null
-  },
-  {
-    "group": "Anime",
-    "tag": "#AmagiBrilliantPark",
-    "characters": [
-      {
-        "tag": "#SentoIsuzu"
-      }
-    ],
-    "Fixedtags": null
-  },
-  {
-    "group": "Anime",
-    "tag": "#DragonMaid",
-    "characters": [
-      {
-        "tag": "#Elma"
       }
     ],
     "Fixedtags": null
