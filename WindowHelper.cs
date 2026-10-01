@@ -48,6 +48,21 @@ namespace TelegramTags
 
         public static bool FocusTelegram()
         {
+            foreach (Process p in Process.GetProcessesByName("Telegram"))
+            {
+                IntPtr handle = p.MainWindowHandle;
+
+                if (handle == IntPtr.Zero)
+                    continue;
+
+                if (IsIconic(handle))
+                    ShowWindow(handle, SW_RESTORE);
+
+                SetForegroundWindow(handle);
+                return true;
+            }
+
+            // fallback: scan by partial name (e.g. "Telegram Desktop", portable builds)
             foreach (Process p in Process.GetProcesses())
             {
                 if (!p.ProcessName.ToLower().Contains("telegram"))
@@ -58,17 +73,10 @@ namespace TelegramTags
                 if (handle == IntPtr.Zero)
                     continue;
 
-
-                // اگر تلگرام Minimize شده
                 if (IsIconic(handle))
-                {
                     ShowWindow(handle, SW_RESTORE);
-                }
 
-
-                // آوردن تلگرام جلو
                 SetForegroundWindow(handle);
-
                 return true;
             }
 

@@ -2,21 +2,13 @@
 
 public class TagItem
 {
-    public string group { get; set; }
-
-    public string tag { get; set; }
-
-    public List<CharacterItem> characters { get; set; }
-
-    public List<FixedTagItem> Fixedtags { get; set; }
+    public string group { get; set; }              // "Fixed" or "Tag" (only on group headers)
+    public string tag { get; set; }                // "#Something" (only on leaf items)
+    public List<TagItem> tags { get; set; }        // children (groups only)
+    public List<CharacterItem> characters { get; set; } // characters (Tag items only)
 }
 
 public class CharacterItem
-{
-    public string tag { get; set; }
-}
-
-public class FixedTagItem
 {
     public string tag { get; set; }
 }

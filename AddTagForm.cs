@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using System.Drawing;
-
 
 namespace TelegramTags
 {
@@ -14,21 +13,26 @@ namespace TelegramTags
         public AddTagForm()
         {
             InitializeComponent();
+
             SetColors();
             SetupSaveButton();
+
             cmbType.Items.Clear();
 
             cmbType.Items.Add("Fixed");
-            cmbType.Items.Add("Game");
-            cmbType.Items.Add("Anime");
-            cmbType.Items.Add("Other");
+            cmbType.Items.Add("Tag");
             cmbType.Items.Add("Character");
 
-            cmbType.SelectedIndexChanged += cmbType_SelectedIndexChanged;
+            cmbType.SelectedIndexChanged +=
+                cmbType_SelectedIndexChanged;
 
             cmbType.SelectedIndex = 0;
         }
 
+
+        // =========================
+        // Save
+        // =========================
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -41,186 +45,253 @@ namespace TelegramTags
                 return;
             }
 
-            if (!tag.StartsWith("#"))
+
+            // =========================
+            // افزودن # برای Tag و Character
+            // =========================
+
+            if (!tag.StartsWith("#") &&
+                type != "Fixed")
+            {
                 tag = "#" + tag;
+            }
 
 
-            string file = "hashtags.json";
+            // Fixed می‌تواند @ داشته باشد
+            // مثل @EveArt2
+
+
+            string file = Paths.HashtagsFile;
 
             if (!File.Exists(file))
             {
-                MessageBox.Show("hashtags.json پیدا نشد.");
+                MessageBox.Show(
+                    "hashtags.json پیدا نشد.");
+
                 return;
             }
 
 
-            string json = File.ReadAllText(file);
+            string json =
+                File.ReadAllText(file);
+
 
             List<TagItem> allTags =
                 JsonConvert.DeserializeObject<List<TagItem>>(json)
                 ?? new List<TagItem>();
 
-            // جلوگیری از تکراری بودن تگ
-            bool duplicate = false;
 
-            // تگ ثابت
-            if (type == "Fixed")
-            {
-                TagItem general = allTags.FirstOrDefault(x => x.group == "General");
-
-                if (general != null && general.Fixedtags != null)
-                {
-                    duplicate = general.Fixedtags.Any(x =>
-                        string.Equals(x.tag, tag, StringComparison.OrdinalIgnoreCase));
-                }
-            }
-
-            // عنوان Game / Anime / Other
-            else if (type == "Game" ||
-                     type == "Anime" ||
-                     type == "Other")
-            {
-                duplicate = allTags.Any(x =>
-                    (x.group == "Game" ||
-                     x.group == "Anime" ||
-                     x.group == "Other") &&
-                    string.Equals(x.tag, tag, StringComparison.OrdinalIgnoreCase));
-            }
-
-            // شخصیت
-            else if (type == "Character")
-            {
-                if (cmbCategory.SelectedItem == null)
-                {
-                    MessageBox.Show("یک عنوان انتخاب کنید.");
-                    return;
-                }
-
-                string category = cmbCategory.SelectedItem.ToString();
-
-                TagItem parent = allTags.FirstOrDefault(x =>
-                    (x.group == "Game" ||
-                     x.group == "Anime" ||
-                     x.group == "Other") &&
-                    x.tag == category);
-
-                if (parent == null)
-                {
-                    MessageBox.Show("عنوان پیدا نشد.");
-                    return;
-                }
-
-                if (parent.characters != null)
-                {
-                    duplicate = parent.characters.Any(x =>
-                        string.Equals(x.tag, tag, StringComparison.OrdinalIgnoreCase));
-                }
-            }
-
-            if (duplicate)
-            {
-                MessageBox.Show(
-                    "این هشتگ از قبل وجود دارد.",
-                    "تگ تکراری",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                return;
-            }
-
+            // =========================
             // Fixed
+            // =========================
+
             if (type == "Fixed")
             {
-                TagItem general = allTags
-                    .FirstOrDefault(x => x.group == "General");
+                TagItem general =
+                    allTags.FirstOrDefault(
+                        x => x.group == "Fixed");
+
 
                 if (general == null)
                 {
                     general = new TagItem
                     {
-                        group = "General",
-                        Fixedtags = new List<FixedTagItem>()
+                        group = "Fixed",
+                        tags = new List<TagItem>()
                     };
 
                     allTags.Add(general);
                 }
 
-                if (general.Fixedtags == null)
-                    general.Fixedtags = new List<FixedTagItem>();
 
-                general.Fixedtags.Add(new FixedTagItem
+                if (general.tags == null)
                 {
-                    tag = tag
-                });
+                    general.tags =
+                        new List<TagItem>();
+                }
+
+
+                bool duplicate =
+                    general.tags.Any(x =>
+                        string.Equals(
+                            x.tag,
+                            tag,
+                            StringComparison.OrdinalIgnoreCase));
+
+
+                if (duplicate)
+                {
+                    ShowDuplicate();
+                    return;
+                }
+
+
+                general.tags.Add(
+                    new TagItem
+                    {
+                        tag = tag
+                    });
             }
 
 
-            // Game / Anime / Other
-            else if (type == "Game" ||
-                     type == "Anime" ||
-                     type == "Other")
+            // =========================
+            // Tag
+            // =========================
+
+            else if (type == "Tag")
             {
-                allTags.Add(new TagItem
+                TagItem tagGroup =
+                    allTags.FirstOrDefault(
+                        x => x.group == "Tag");
+
+
+                if (tagGroup == null)
                 {
-                    group = type,
-                    tag = tag,
-                    characters = new List<CharacterItem>()
-                });
+                    tagGroup = new TagItem
+                    {
+                        group = "Tag",
+                        tags = new List<TagItem>()
+                    };
+
+                    allTags.Add(tagGroup);
+                }
+
+
+                if (tagGroup.tags == null)
+                {
+                    tagGroup.tags =
+                        new List<TagItem>();
+                }
+
+
+                bool duplicate =
+                    tagGroup.tags.Any(x =>
+                        string.Equals(
+                            x.tag,
+                            tag,
+                            StringComparison.OrdinalIgnoreCase));
+
+
+                if (duplicate)
+                {
+                    ShowDuplicate();
+                    return;
+                }
+
+
+                tagGroup.tags.Add(
+                    new TagItem
+                    {
+                        tag = tag,
+                        characters =
+                            new List<CharacterItem>()
+                    });
             }
 
 
+            // =========================
             // Character
+            // =========================
+
             else if (type == "Character")
             {
                 if (cmbCategory.SelectedItem == null)
                 {
-                    MessageBox.Show("یک عنوان انتخاب کنید.");
+                    MessageBox.Show(
+                        "یک Tag انتخاب کنید.");
+
                     return;
                 }
 
-                string category =
+
+                string parentTag =
                     cmbCategory.SelectedItem.ToString();
 
 
-                TagItem parent = allTags.FirstOrDefault(x =>
-                    (x.group == "Game" ||
-                     x.group == "Anime" ||
-                     x.group == "Other") &&
-                    x.tag == category);
+                TagItem tagGroup =
+                    allTags.FirstOrDefault(
+                        x => x.group == "Tag");
+
+
+                if (tagGroup == null ||
+                    tagGroup.tags == null)
+                {
+                    MessageBox.Show(
+                        "Tag انتخاب‌شده پیدا نشد.");
+
+                    return;
+                }
+
+
+                TagItem parent =
+                    tagGroup.tags.FirstOrDefault(x =>
+                        string.Equals(
+                            x.tag,
+                            parentTag,
+                            StringComparison.OrdinalIgnoreCase));
 
 
                 if (parent == null)
                 {
-                    MessageBox.Show("عنوان پیدا نشد.");
+                    MessageBox.Show(
+                        "Tag انتخاب‌شده پیدا نشد.");
+
                     return;
                 }
 
 
                 if (parent.characters == null)
-                    parent.characters = new List<CharacterItem>();
-
-
-                parent.characters.Add(new CharacterItem
                 {
-                    tag = tag
-                });
+                    parent.characters =
+                        new List<CharacterItem>();
+                }
+
+
+                bool duplicate =
+                    parent.characters.Any(x =>
+                        string.Equals(
+                            x.tag,
+                            tag,
+                            StringComparison.OrdinalIgnoreCase));
+
+
+                if (duplicate)
+                {
+                    ShowDuplicate();
+                    return;
+                }
+
+
+                parent.characters.Add(
+                    new CharacterItem
+                    {
+                        tag = tag
+                    });
             }
 
 
-            string newJson = JsonConvert.SerializeObject(
-                allTags,
-                Formatting.Indented
-            );
+            // =========================
+            // Save JSON
+            // =========================
+
+            string newJson =
+                JsonConvert.SerializeObject(
+                    allTags,
+                    Formatting.Indented);
 
 
-            File.WriteAllText(file, newJson);
+            File.WriteAllText(
+                file,
+                newJson);
 
-
-            
 
             Close();
         }
 
+
+        // =========================
+        // Type Changed
+        // =========================
 
         private void cmbType_SelectedIndexChanged(
             object sender,
@@ -229,9 +300,11 @@ namespace TelegramTags
             cmbCategory.Items.Clear();
 
 
-            string type = cmbType.Text;
+            string type =
+                cmbType.Text;
 
 
+            // فقط Character نیاز به Parent Tag دارد
             if (type != "Character")
             {
                 lblCategory.Visible = false;
@@ -245,14 +318,14 @@ namespace TelegramTags
             cmbCategory.Visible = true;
 
 
-            string file = "hashtags.json";
-
+            string file =Paths.HashtagsFile;
 
             if (!File.Exists(file))
                 return;
 
 
-            string json = File.ReadAllText(file);
+            string json =
+                File.ReadAllText(file);
 
 
             List<TagItem> allTags =
@@ -260,68 +333,148 @@ namespace TelegramTags
                 ?? new List<TagItem>();
 
 
-            // همه Game + Anime + Other
-            var categories = allTags
-    .Where(x =>
-        x.group == "Game" ||
-        x.group == "Anime" ||
-        x.group == "Other")
-    .OrderBy(x => x.tag, StringComparer.OrdinalIgnoreCase)
-    .ToList();
+            // =========================
+            // فقط Tag ها
+            // =========================
 
-            foreach (var item in categories)
+            var tagGroup =
+                allTags.FirstOrDefault(
+                    x => x.group == "Tag");
+
+
+            if (tagGroup == null ||
+                tagGroup.tags == null)
+                return;
+
+
+            var tags = tagGroup.tags
+                .OrderBy(
+                    x => x.tag,
+                    StringComparer.OrdinalIgnoreCase)
+                .ToList();
+
+
+            foreach (var item in tags)
             {
-                cmbCategory.Items.Add(item.tag);
+                cmbCategory.Items.Add(
+                    item.tag);
             }
 
 
             if (cmbCategory.Items.Count > 0)
+            {
                 cmbCategory.SelectedIndex = 0;
+            }
         }
+
+
+        // =========================
+        // Duplicate
+        // =========================
+
+        private void ShowDuplicate()
+        {
+            MessageBox.Show(
+                "این تگ از قبل وجود دارد.",
+                "تگ تکراری",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+        }
+
+
+        // =========================
+        // Colors
+        // =========================
+
         void SetColors()
         {
-            this.BackColor = Color.FromArgb(30, 31, 34);
+            this.BackColor =
+                Color.FromArgb(30, 31, 34);
 
-            lblCategory.ForeColor = Color.White;
-            lblTag.ForeColor = Color.White;
-            lblType.ForeColor = Color.White;
 
-            cmbType.BackColor = Color.FromArgb(43, 45, 49);
-            cmbType.ForeColor = Color.White;
+            lblCategory.ForeColor =
+                Color.White;
 
-            cmbCategory.BackColor = Color.FromArgb(43, 45, 49);
-            cmbCategory.ForeColor = Color.White;
+            lblTag.ForeColor =
+                Color.White;
 
-            txtTag.BackColor = Color.FromArgb(43, 45, 49);
-            txtTag.ForeColor = Color.White;
+            lblType.ForeColor =
+                Color.White;
 
+
+            cmbType.BackColor =
+                Color.FromArgb(43, 45, 49);
+
+            cmbType.ForeColor =
+                Color.White;
+
+
+            cmbCategory.BackColor =
+                Color.FromArgb(43, 45, 49);
+
+            cmbCategory.ForeColor =
+                Color.White;
+
+
+            txtTag.BackColor =
+                Color.FromArgb(43, 45, 49);
+
+            txtTag.ForeColor =
+                Color.White;
         }
+
+
+        // =========================
+        // Save Button
+        // =========================
 
         private void SetupSaveButton()
         {
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.UseVisualStyleBackColor =
+                false;
 
-            btnSave.BackColor = Color.FromArgb(87, 242, 135);
-            btnSave.ForeColor = Color.Black;
+            btnSave.FlatStyle =
+                FlatStyle.Flat;
 
-            btnSave.MouseEnter += BtnSave_MouseEnter;
-            btnSave.MouseLeave += BtnSave_MouseLeave;
+            btnSave.FlatAppearance.BorderSize =
+                0;
+
+            btnSave.BackColor =
+                Color.FromArgb(87, 242, 135);
+
+            btnSave.ForeColor =
+                Color.Black;
+
+
+            btnSave.MouseEnter +=
+                BtnSave_MouseEnter;
+
+            btnSave.MouseLeave +=
+                BtnSave_MouseLeave;
         }
 
-        private void BtnSave_MouseEnter(object sender, EventArgs e)
+
+        private void BtnSave_MouseEnter(
+            object sender,
+            EventArgs e)
         {
-            btnSave.BackColor = Color.FromArgb(120, 255, 160);
-            btnSave.ForeColor = Color.Black;
+            btnSave.BackColor =
+                Color.FromArgb(120, 255, 160);
+
+            btnSave.ForeColor =
+                Color.Black;
         }
 
-        private void BtnSave_MouseLeave(object sender, EventArgs e)
+
+        private void BtnSave_MouseLeave(
+            object sender,
+            EventArgs e)
         {
-            btnSave.BackColor = Color.FromArgb(87, 242, 135);
-            btnSave.ForeColor = Color.Black;
-        }
+            btnSave.BackColor =
+                Color.FromArgb(87, 242, 135);
 
+            btnSave.ForeColor =
+                Color.Black;
+        }
     }
-
 }

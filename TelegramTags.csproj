@@ -65,6 +65,7 @@
     <Compile Include="ManageTagsForm.Designer.cs">
       <DependentUpon>ManageTagsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Paths.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagItem.cs" />
@@ -93,9 +94,7 @@
     <EmbeddedResource Include="TagPickerForm.resx">
       <DependentUpon>TagPickerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="hashtags.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="hashtags.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
